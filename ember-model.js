@@ -182,6 +182,12 @@ Ember.RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
 
   materializeData: function(klass, data) {
     var self = this;
+		// data is supposed to be an array; adding logic
+		//  to push a naked object into an array
+		if (data.constructor !== Array) {
+			var newArr = data.results;
+			data = newArr;
+		}
     return Ember.A(data.map(function(el) {
       return klass.findFromCacheOrLoad(el, self.container); // FIXME
     }));
