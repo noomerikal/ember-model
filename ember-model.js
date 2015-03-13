@@ -1,6 +1,6 @@
 (function() {
 
-var VERSION = '0.0.14';
+var VERSION = '0.0.15';
 
 if (Ember.libraries) {
   Ember.libraries.register('Ember Model', VERSION);
@@ -188,6 +188,7 @@ Ember.RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
 			var newArr = data.results;
 			data = newArr;
 		}
+
     return Ember.A(data.map(function(el) {
       return klass.findFromCacheOrLoad(el, self.container); // FIXME
     }));
